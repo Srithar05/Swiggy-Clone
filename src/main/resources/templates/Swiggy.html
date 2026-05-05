@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Food & Groceries.Discover the best restaurants. Swiggy it!</title>
+    <link rel="icon" sizes="192x192" href="https://media-assets.swiggy.com/portal/m/logo_192x192.png">
+    <link rel="stylesheet" href="../static/css/Swiggy.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close,distance" />
+
+</head>
+
+<body>
+
+    <div class="main-head">
+        <div class="header">
+            <div class="sub-header">
+                <img alt="" class="header-logo" height="100%" loading="lazy" width="100%"
+                    src="../static/images/swiggy_logo_white.avif">
+                <div class="navbar">
+                    <ul>
+                        <a href="">
+                            <li>Swiggy Corporate</li>
+                        </a>
+                        <a href="">
+                            <li>Partner with us</li>
+                        </a>
+                        <li>
+                            <div id="app-btn">
+                                Get the App
+                                <img src="../static/images/arrow_outward_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="symbol">
+                            </div>
+                        </li>
+                        <li>
+                            <div id="signin-btn" onclick="login()">Sign in</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay-container"></div>
+        <div class="signin-page">
+            <span class="material-symbols-outlined" onclick="closelogin()">close</span>
+            <div class="signin-page-head">
+                <div class="login-head">
+                    <h1>Login</h1>
+                    <p>or <span>create an account</span></p>
+                    <p>____</p>
+                </div>
+                <div class="login-img">
+                    <img class="nGXuv" imageurl="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r" width="100" height="105" imageid="" alt="img renderer" src="../static/images/login_page_image.avif">
+                </div>
+            </div>
+            <div class="signin-inputdiv">
+                <input id="signin-phno" type="tel" placeholder="Phone number" maxlength="10">
+            </div>
+            <button id="signin-login-btn">Login</button>
+            <div class="login-terms">
+                <p>By clicking on Login, I accept the <span>Terms & Conditions</span> & <span>Privacy Policy</span></p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            Order food &amp; groceries. Discover best restaurants. Swiggy it!
+        </div>
+
+        <img class="main-left-img"
+            src="../static/images/Veggies_header_left.avif"
+            alt="left_img">
+
+        <img class="main-right-img"
+            src="../static/images/Veggies_header_right.avif"
+            alt="right_img">
+
+        <div class="head-input-div">
+            <div class="head-sub-div" id="head-input-sub1">
+                <span class="material-symbols-outlined location-symbol">distance</span>
+                <input type="text" placeholder="Enter your delivery location">
+                <i class="fa-solid fa-angle-down fa-xl" style="color:rgb(103, 102, 102)"></i>
+            </div>
+            <div class="head-sub-div" id="head-input-sub2">
+                <input type="text" placeholder="Search for restaurent, item or more">
+                <i class="fa-solid fa-magnifying-glass fa-xl" style="color:rgb(103, 102, 102)"></i>
+            </div>
+        </div>
+
+        <div class="head-category">
+            <img class="category-option"
+                src="../static/images/header_food_image.avif"
+                alt="Food">
+            <img class="category-option"
+                src="../static/images/header_instamart_image.avif"
+                alt="InstaMart">
+            <img class="category-option"
+                src="../static/images/header_dineout_image.avif"
+                alt="DineOut">
+        </div>
+
+    </div>
+
+    <div class="food-option">
+        <div class="food-head-div">
+            <h2>Order our best food options</h2>
+            <div class="icon-main-div">
+                <div id="icon-div1" onclick="foodscrollleft()">
+                    <i class="fa-solid fa-arrow-left" style="color: #898989;"></i>
+                </div>
+                <div id="icon-div2" onclick="foodscrollright()">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="food-lines" id="food-lines-container">
+            <div class="food-firstline">
+                <img class="food-pic"
+                    src="../static/images/Biryani.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Pizza.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Burger.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Pasta.avif">
+  
+                <img class="food-pic"
+                    src="../static/images/Dosa.avif">
+                    
+                <img class="food-pic"
+                    src="../static/images/Poori.avif">
+                    
+                <img class="food-pic"
+                    src="../static/images/Idli.avif">
+                    
+                <img class="food-pic"
+                    src="../static/images/Pongal.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Vada.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Pure Veg.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Noodles.avif">
+                
+            </div>
+            <div class="food-secondline">
+                <img class="food-pic"
+                    src="../static/images/Ice Cream.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Shake.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Cake.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Desserts.avif">    
+
+                <img class="food-pic"
+                    src="../static/images/Momo.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Shawarma.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Parotta.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Coffee.avif">
+
+                <img class="food-pic"
+                    src="../static/images/Rolls.avif">
+
+                <img class="food-pic"
+                    src="../static/images/South Indian rice.avif">
+
+                <img class="food-pic"
+                    src="../static/images/North Indian food.avif">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="head-groceries-div">
+        <div class="food-head-div">
+            <h2>Shop groceries on Instamart</h2>
+            <div class="icon-main-div">
+                <div id="icon-div1" onclick="groceriesscrollleft()">
+                    <i class="fa-solid fa-arrow-left" style="color: #898989;"></i>
+                </div>
+                <div id="icon-div2" onclick="groceriesscrollright()">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="main-groceries" id="main-groceries-container">
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Fresh_vegetables.avif">
+                <div>Fresh Vegetables</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Fresh_fruits.avif">
+                <div>Fresh Fruits</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Dairy_bread.avif">
+                <div>Dairy,Bread and Eggs</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Rice_atta.avif">
+                <div>Rice,Atta and Dals</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Dryfruits_masalas.avif">
+                <div>Masalas and Dry Fruits</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Munches.avif">
+                <div>Munchies</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Sweet_tooth.avif">
+                <div>Sweet Tooth</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Cooldrink.avif">
+                <div>Cool Drinks and Juices</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Meat_seafood.avif">
+                <div>Meat and Seafood</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Biscuits_cakes.avif">
+                <div>Biscuits and Cakes</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Cleaning.avif">
+                <div>Cleaning Essentials</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Baby_care.avif">
+                <div>Baby Care</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Pet_things.avif">
+                <div>Pet Supplies</div>
+            </div>
+            <div class="groceries-option">
+                <img class="grocery-pic"
+                    src="../static/images/Bath_body_hair.avif">
+                <div>Bath, Body and Hair</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="app-link-div">
+        <img alt="Get the Swiggy App banner" style="object-fit:contain;height:100%;width:100%"
+            src="../static/images/App_download_banner.avif">
+    </div>
+
+    <div class="food-cities">
+        <div class="head-food-cities">
+            <h2>Cities with food delivery</h2>
+        </div>
+        <div class="body-food-cities">
+            <div class="city-name">Order food online in Bangalore</div>
+            <div class="city-name">Order food online in Chennai</div>
+            <div class="city-name">Order food online in Mumbai</div>
+            <div class="city-name">Order food online in Pune</div>
+            <div class="city-name">Order food online in Delhi</div>
+            <div class="city-name">Order food online in Hyderabad</div>
+            <div class="city-name">Order food online in Tirunelveli</div>
+            <div class="city-name">Order food online in Jaipur</div>
+            <div class="city-name">Order food online in Kolkata</div>
+            <div class="city-name">Order food online in Ahmedabad</div>
+            <div class="city-name">Order food online in Gujarat</div>
+            <div class="more-cities">Show More <i class="fa-solid fa-angle-down fa-lg" style="color: #FF5200;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="food-cities">
+        <div class="head-food-cities">
+            <h2>Cities with grocery delivery</h2>
+        </div>
+        <div class="body-food-cities">
+            <div class="city-name">Order grocery delivery in Chennai</div>
+            <div class="city-name">Order grocery delivery in Mumbai</div>
+            <div class="city-name">Order grocery delivery in Pune</div>
+            <div class="city-name">Order grocery delivery in Delhi</div>
+            <div class="city-name">Order grocery delivery in Kolkata</div>
+            <div class="city-name">Order grocery delivery in Tirunelveli</div>
+            <div class="city-name">Order grocery delivery in Ahmedabad</div>
+            <div class="city-name">Order grocery delivery in Gujarat</div>
+            <div class="city-name">Order grocery delivery in Hyderabad</div>
+            <div class="city-name">Order grocery delivery in Bangalore</div>
+            <div class="city-name">Order grocery delivery in Jaipur</div>
+            <div class="more-cities">Show More <i class="fa-solid fa-angle-down fa-lg" style="color: #FF5200;"></i>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-details">
+            <div class="footer-logo">
+                <img alt="" class="" loading="lazy"
+                    src="../static/images/Swiggy_logo_image_footer.svg">
+                <p>&copy; 2026 Swiggy Limited</p>
+            </div>
+            <div class="footer-company">
+                <h3>Company</h3>
+                <p>About Us</p>
+                <p>Swiggy Corporate</p>
+                <p>Careers</p>
+                <p>Team</p>
+                <p>Swiggy One</p>
+                <p>Swiggy Instamart</p>
+                <p>Swiggy Dineout</p>
+                <p>Minis</p>
+            </div>
+            <div class="contact-legal">
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Help & Support</p>
+                    <p>Partner With Us</p>
+                    <p>Ride With Us</p>
+                </div>
+                <div class="footer-legal">
+                    <h3>Legal</h3>
+                    <p>Terms & Conditions</p>
+                    <p>Cookie Policy</p>
+                    <p>Privacy Policy</p>
+                </div>
+            </div>
+            <div class="footer-available">
+                <h3>Available in</h3>
+                <p>Chennai</p>
+                <p>Bangalore</p>
+                <p>Hyderabad</p>
+                <p>Mumbai</p>
+                <p>Delhi</p>
+                <p>Pune</p>
+                <div class="available-cities">
+                    <p>685 cities</p>
+                    <i class="fa-solid fa-angle-down" style="color: grey;"></i>
+                </div>
+            </div>
+            <div>
+                <div class="footer-life">
+                    <h3>Life at Swiggy</h3>
+                    <p>Explore With Swiggy</p>
+                    <p>Swiggy News</p>
+                    <p>Snackables</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Social Links</h3>
+                    <i class="fa-brands fa-linkedin fa-lg"></i>
+                    <i class="fa-brands fa-instagram fa-lg"></i>
+                    <i class="fa-brands fa-facebook-f fa-lg"></i>
+                    <i class="fa-brands fa-pinterest fa-lg"></i>
+                    <i class="fa-brands fa-twitter fa-lg"></i>
+                </div>
+            </div>
+        </div>
+        <hr id="hr-line">
+        <div class="footer-download">
+            <h2>For better experience, download the Swiggy app now</h2>
+            <img alt="" src="../static/images/AppStore_icon.avif" height="65" width="200">
+            <img alt="" src="../static/images/GooglePlay_icon.avif" height="65" width="200">
+        </div>
+    </footer>
+
+    <script src="../static/js/Swiggy.js"></script>
+</body>
+
+</html>
