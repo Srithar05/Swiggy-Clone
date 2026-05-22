@@ -84,16 +84,17 @@ body{
     z-index: 2;
     display: none;
 }
-.signin-page{
+.auth-section{
     height: 100vh;
     width: 35%;
     background-color: white;
+    overflow-y: auto;
     position: fixed;
     right: 0;
     top: 0;
     z-index: 3;
-    padding: 30px 40px;
-    animation-duration: 1s;
+    padding: 30px 30px 30px 40px;
+    animation-duration: 0.5s;
     animation-timing-function: ease;
     animation-iteration-count: 1;
     display: none;
@@ -119,13 +120,15 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px 0px;
+    margin: 20px 0px 0px 0px;
 }
 .login-head>h1{
-    font-weight: 450;
+    font-weight: 500;
+    font-size: 33px;
 }
 .login-head p:first-of-type{
     padding: 15px 0px 10px 0px;
+    font-size: 15px;
 }
 .login-head p:last-of-type{
     font-weight: 400;
@@ -137,33 +140,77 @@ body{
 .material-symbols-outlined{
     cursor: pointer;
 }
-#signin-phno{
+.signin-inputdiv input{
     width: 100%;
     height: 100%;
-    border: none;
+    border: none; 
     font-size: 17px;
 }
-#signin-phno::placeholder{
+.signin-inputdiv input::placeholder{
     font-size: 17px;
 }
+
 #signin-login-btn{
     height: 50px;
     width: 100%;
     color: white;
     background-color: #FF5200;
     border: none;
-    font-size: 17px;
+    font-size: 14px;
+    font-weight:bold;
     cursor: pointer;
 }
 .signin-inputdiv{
-    height: 70px;
     width: 100%;
-    margin: 20px 0px;
-    padding: 0px 20px;
-    border: 1px solid black;
+    margin: 10px 0px 20px 0px;
+    border: 1px solid grey;
 }
-.signin-inputdiv>input:focus{
+.input-field{
+    width: 100%;
+    padding: 30px 20px 5px 20px;
+    border-bottom: 1px solid;
+    position: relative;
+}
+.signin-inputdiv input:focus{
     outline: none;
+}
+.input-field:last-child{
+    border-bottom: none;
+}
+.input-field label{
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: #aaa;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+.input-field input:focus + label,
+.input-field input:not(:placeholder-shown) + label {
+    top: 20px;                   
+    font-size: 12px;                       
+}
+.error-msg{
+    color: rgb(255, 0, 0);
+    font-size: 11px;
+    font-weight: 100;
+    min-height: 16px;
+    margin-top: 4px;
+    display: block;
+}
+#signup-failed-msg{
+    text-align: center;
+    color: rgb(255, 0, 0);
+    font-size: 12px;
+    font-weight: 100;
+    min-height: 16px;
+    margin-top: 4px;
+    display: block;
+}
+.label-error{
+    color: red !important;
 }
 .login-terms{
     padding: 10px 0px;
@@ -254,8 +301,6 @@ body{
 .category-option{
     width: 35%;
     height: auto;
-    /* height: 300px;
-    width: 320px; */
     cursor: pointer;
 }
 .food-option{
@@ -285,8 +330,8 @@ body{
     display: flex;
     justify-content: space-evenly;
 }
-#icon-div1{
-    background-color: rgb(234, 233, 233);
+.icon-div1,.icon-div2{
+    background-color: rgb(212, 208, 208);
     height: 30px;
     width: 30px;
     border-radius: 100%;
@@ -295,15 +340,8 @@ body{
     justify-content: center; 
     cursor: pointer;
 }
-#icon-div2{
-    background-color: rgb(212, 208, 208);
-    height: 30px;
-    width: 30px;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    cursor: pointer; 
+#food-leftarrow{
+    opacity: 0.6;
 }
 .food-lines{
     overflow: scroll;
@@ -321,6 +359,9 @@ body{
     height: 300px;
     width: 80%;
     margin: 100px auto;
+}
+#grocery-leftarrow{
+    opacity: 0.6;
 }
 .main-groceries{
     margin-top: 20px;
@@ -350,7 +391,6 @@ body{
 }
 .food-cities{
     width: 72%;
-    height: 350px;
     margin: 70px auto;
 }
 .city-name:hover{
@@ -399,6 +439,12 @@ body{
 .more-cities:hover{
     border: 2px solid #FF5200;
     box-shadow: 1px 3px 10px 2px rgb(227, 224, 224);
+}
+.extra-food-cities{
+    display: none;
+}
+.extra-grocery-cities{
+    display: none;
 }
 footer{
     background-color: #F0F0F5;
@@ -454,10 +500,10 @@ footer{
     justify-content: space-between;
     margin: 40px auto;
 }
-.footer-download>img{
+.footer-download img{
     transition: 0.3s ease;
 }
-.footer-download>img:hover{
+.footer-download img:hover{
     transform: scale(1.05);
     cursor: pointer;
 }
