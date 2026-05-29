@@ -57,6 +57,9 @@
         </div>
 
         <div class="overlay-container" onclick="closelogin()"></div>
+        
+        <div id="success-msg">Signup successfull <span style="color: black;">Please login.</span></div>
+
         <div class="auth-section">
             <div id="signin-page">
                 <span class="material-symbols-outlined" onclick="closelogin()">close</span>
@@ -77,7 +80,7 @@
                         <label for="signin-phno">Phone number</label>
                     </div>
                 </div>
-                <button id="signin-login-btn">LOGIN</button>
+                <button id="login-btn">LOGIN</button>
                 <div class="login-terms">
                     <p>By clicking on Login, I accept the <span>Terms & Conditions</span> & <span>Privacy Policy</span>
                     </p>
@@ -105,7 +108,7 @@
                         <span class="error-msg" id="name-error"></span>
                     </div>
                     <div class="input-field">
-                        <input type="tel" id="signup-phno" maxlength="10" placeholder="">
+                        <input type="text" id="signup-phno" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="">
                         <label for="signup-phno" id="signup-phno-label">Phone number</label>
                         <span class="error-msg" id="phno-error"></span>
                     </div>
@@ -115,12 +118,12 @@
                         <span class="error-msg" id="email-error"></span>
                     </div> 
                     <div class="input-field">
-                        <input type="password" minlength="6" id="signup-password" placeholder="">
+                        <input type="password" minlength="6" maxlength="15" id="signup-password" placeholder="">
                         <label for="signup-password" id="signup-psw-label">Password</label>
                         <span class="error-msg" id="password-error"></span>
                     </div>
                 </div>
-                <button id="signin-login-btn" onclick="signupContinue()">CONTINUE</button>
+                <button id="signup-btn" onclick="signupContinue()">CONTINUE</button>
                 <div class="login-terms">
                     <p>By creating an account, I accept the <span>Terms & Conditions</span> & <span>Privacy Policy</span>
                     </p>

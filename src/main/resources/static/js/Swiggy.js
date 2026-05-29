@@ -38,6 +38,8 @@ function signup(){
 function signin(){
     signinpage.style.display = "block";
     signuppage.style.display = "none";
+    document.getElementById("signup-failed-msg").innerText = "";
+    document.getElementById("signup-btn").innerText = "CONTINUE";
     signinphno.focus();
 }
 
@@ -104,37 +106,50 @@ function validateSignup(){
 }
 
 async function signupContinue(){
+    var signupfailedMsg = document.getElementById("signup-failed-msg");
+    var signupBtn = document.getElementById("signup-btn");
     var isValid = validateSignup();
+
     if(!isValid)
     {
         return;
     }
 
     var userData = {
-        name : signupname,
-        phone : signupphno,
-        email : signupemail,
-        password : signuppassword
+        userName : document.getElementById("signup-name").value.trim(),
+        phone : document.getElementById("signup-phno").value.trim(),
+        email : document.getElementById("signup-email").value.trim(),
+        password : document.getElementById("signup-password").value.trim()
     }
+
+    signupfailedMsg.innerText = ""
+    signupBtn.innerText = "CONTINUE"
+
     try {
-        let response = await fetch("",{
+        let response = await fetch("http://localhost:8080/auth/register",{
             method : "POST",
             headers : { "Content-Type" : "application/json"},
             body : JSON.stringify(userData),
         });
         var data = await response.json();
-        if(data === "signup success")
+        console.log("Signup completed")
+        console.log(data)
+        if(response.ok)
         {
-            signin();
+            document.getElementById("success-msg").style.display = "block";
+            setTimeout(()=>{
+                signin();
+            },2000);
         }
-        else if(data === "Email already exists")
+        else if(data.message === "Email already exists")
         {
             document.getElementById("email-error").innerText = "Email already registered";
             signupemaillabel.classList.add("label-error");
         }
 
     } catch (error) {
-        document.getElementById("signup-failed-msg").innerText = "Signup failed. Please try again.";
+        signupfailedMsg.innerText = "Signup failed. Please try again.";
+        signupBtn.innerHTML = "TRY AGAIN";
     }
 }
 
