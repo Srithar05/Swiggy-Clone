@@ -17,14 +17,99 @@ function login()
     signinphno.focus();
 }
 
-function closelogin(){
-    authsection.style.animationName = "signin-close";
-    overlaycontainer.style.display = "none";
+function validateSignin(){
+    var signinphoneno = document.getElementById("signin-phno").value.trim();
+    var signinpsw = document.getElementById("signin-password").value.trim();
+    var signinphnolabel = document.getElementById("signin-phno-label");
+    var signinpswlabel = document.getElementById("signin-psw-label");
+    var isValidSignin = true;
 
-    setTimeout(()=>{
-        authsection.style.display = "none";
-        document.body.style.overflow = "auto";
-    },450);
+    document.getElementById("signin-phno-error").innerText = ""    
+    document.getElementById("signin-psw-error").innerText = ""    
+    signinphnolabel.classList.remove("label-error");
+    signinpswlabel.classList.remove("label-error");
+    
+    if(signinphoneno === ""){
+        document.getElementById("signin-phno-error").innerText = "Please enter your phone number"
+        signinphnolabel.classList.add("label-error")
+        isValidSignin = false;
+    }
+    else if(signinphoneno.length !== 10){
+        document.getElementById("signin-phno-error").innerText = "Please enter valid phone number"
+        signinphnolabel.classList.add("label-error")
+        isValidSignin = false;
+    } 
+
+    if(signinpsw === ""){
+        document.getElementById("signin-psw-error").innerText = "Please enter password";
+        signinpswlabel.classList.add("label-error");
+        isValidSignin = false;
+    }
+    else if(signinpsw.length < 6){
+       document.getElementById("signin-psw-error").innerText = "Password must be 6 characters minimum";
+        signinpswlabel.classList.add("label-error");
+        isValidSignin = false;
+    }
+    else if(!/^[a-zA-Z0-9@#$]*$/.test(signinpsw)){
+       document.getElementById("signin-psw-error").innerText = "Password can only contain letters, numbers and @ $ # symbols";
+        signinpswlabel.classList.add("label-error");
+        isValidSignin = false;
+    }
+
+    return isValidSignin;
+}
+
+async function loginContinue(){
+    var signinfailedmsg = document.getElementById("signin-failed-msg")
+    var loginBtn = document.getElementById("login-btn");
+    var successmsg = document.getElementById("success-msg")
+    var isValidSignin = validateSignin();
+    if(!isValidSignin)
+    {
+        return;
+    }
+
+    var loginData = {
+        phone : document.getElementById("signin-phno").value.trim(),
+        password : document.getElementById("signin-password").value.trim()
+    }
+
+    signinfailedmsg.innerText = ""
+    loginBtn.innerText = "LOGIN"
+    try{
+        let response = await fetch("http://localhost:8080/auth/login",{
+            method : "POST",
+            headers : { "Content-Type" : "application/json"},
+            body : JSON.stringify(loginData)
+        });
+
+        var data = await response.json();
+        if(response.status === 200)
+        {
+            console.log(data)
+            successmsg.innerText = "Login successfull"
+            successmsg.style.display = "block";
+            setTimeout(()=>{
+                closelogin();
+                successmsg.innerText = ""
+                successmsg.style.display = "none";
+            },2000);
+        }
+        else if(response.status === 404)
+        {
+            signinfailedmsg.innerText = data.message;
+            document.getElementById("signin-phno-label").classList.add("label-error")
+        }
+        else if(response.status === 401)
+        {
+            signinfailedmsg.innerText = data.message;
+            document.getElementById("signin-psw-label").classList.add("label-error")
+        }
+    }
+    catch(error){
+        signinfailedMsg.innerText = "Login failed. Please try again.";
+        loginBtn.innerHTML = "TRY AGAIN";
+    }
 }
 
 var signinpage = document.getElementById("signin-page")
@@ -41,6 +126,15 @@ function signin(){
     document.getElementById("signup-failed-msg").innerText = "";
     document.getElementById("signup-btn").innerText = "CONTINUE";
     signinphno.focus();
+}
+
+function resetAuthForm() {
+    document.getElementById("signup-name").value = "";
+    document.getElementById("signup-phno").value = "";
+    document.getElementById("signup-email").value = "";
+    document.getElementById("signup-password").value = "";
+    document.getElementById("signin-phno").value = "";
+    document.getElementById("signin-password").value = "";
 }
 
 function validateSignup(){
@@ -101,6 +195,11 @@ function validateSignup(){
         signuppswlabel.classList.add("label-error");
         isValid = false;
     }
+    else if(!/^[a-zA-Z0-9@#$]*$/.test(signuppassword)){
+        document.getElementById("password-error").innerText = "Password can only contain letters, numbers and @ $ # symbols";
+        signuppswlabel.classList.add("label-error");
+        isValid = false;
+    }
 
     return isValid;
 }
@@ -129,22 +228,34 @@ async function signupContinue(){
         let response = await fetch("http://localhost:8080/auth/register",{
             method : "POST",
             headers : { "Content-Type" : "application/json"},
-            body : JSON.stringify(userData),
+            body : JSON.stringify(userData)
         });
         var data = await response.json();
-        console.log("Signup completed")
-        console.log(data)
-        if(response.ok)
+        if(response.status === 201)
         {
+            console.log(data)
             document.getElementById("success-msg").style.display = "block";
+            resetSignupForm();
             setTimeout(()=>{
                 signin();
             },2000);
+            setTimeout(()=>{
+                document.getElementById("success-msg").style.display = "none";
+            },4000);
         }
-        else if(data.message === "Email already exists")
+        else if(response.status === 409)
         {
-            document.getElementById("email-error").innerText = "Email already registered";
-            signupemaillabel.classList.add("label-error");
+            console.log(data)
+            if(data.message === "Email already registered! Please login.")
+            {
+                document.getElementById("signup-failed-msg").innerText = data.message;
+                document.getElementById("signup-email-label").classList.add("label-error");
+            }
+            if(data.message === "Phone number already registered! Please login.")
+            {
+                document.getElementById("signup-failed-msg").innerText = data.message;
+                document.getElementById("signup-phno-label").classList.add("label-error");
+            }
         }
 
     } catch (error) {
@@ -153,9 +264,31 @@ async function signupContinue(){
     }
 }
 
+function closelogin(){
+    authsection.style.animationName = "signin-close";
+    overlaycontainer.style.display = "none";
+
+    setTimeout(()=>{
+        authsection.style.display = "none";
+        document.body.style.overflow = "auto";
+        resetAuthForm();
+    },450);
+    document.getElementById("name-error").innerText = ""    
+    document.getElementById("phno-error").innerText = ""    
+    document.getElementById("email-error").innerText = ""    
+    document.getElementById("password-error").innerText = ""    
+    document.getElementById("signin-phno-error").innerText = ""
+    document.getElementById("signin-psw-error").innerText = ""
+    document.getElementById("signup-name-label").classList.remove("label-error");
+    document.getElementById("signup-phno-label").classList.remove("label-error");
+    document.getElementById("signup-email-label").classList.remove("label-error");
+    document.getElementById("signup-psw-label").classList.remove("label-error");
+    document.getElementById("signin-phno-label").classList.remove("label-error");
+    document.getElementById("signin-psw-label").classList.remove("label-error");
+}
+
 var foodleftarrow = document.getElementById("food-leftarrow")
 var foodrightarrow = document.getElementById("food-rightarrow")
-
 var foodlines = document.getElementById("food-lines-container")
 function foodscrollright(){
     foodlines.scrollBy({left:480, behavior:"smooth"});
@@ -184,7 +317,6 @@ foodlines.addEventListener("scroll",()=>{
 
 var groceryleftarrow = document.getElementById("grocery-leftarrow")
 var groceryrightarrow = document.getElementById("grocery-rightarrow")
-
 var grocerieslines = document.getElementById("main-groceries-container")
 function groceriesscrollright(){
     grocerieslines.scrollBy({left:500, behavior:"smooth"});

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.jspiders.swiggy.dao.UserDao;
 import com.jspiders.swiggy.dto.UserResponseDto;
 import com.jspiders.swiggy.entity.User;
+import com.jspiders.swiggy.exception.InvalidAuthenticationException;
 import com.jspiders.swiggy.util.ResponseStructure;
 
 @Service
@@ -49,7 +50,7 @@ public class UserService {
 		}
 		else
 		{
-			throw new IllegalArgumentException("Incorrect Phone number or Password!!!");
+			throw new InvalidAuthenticationException("Incorrect Password!!!");
 		}
 	}
 }

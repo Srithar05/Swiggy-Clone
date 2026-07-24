@@ -74,13 +74,20 @@
                         src="../static/images/login_page_image.avif">
                     </div>
                 </div>
+                <div id="signin-failed-msg"></div>
                 <div class="signin-inputdiv">
                     <div class="input-field">
                         <input id="signin-phno" type="tel" placeholder="" maxlength="10">
-                        <label for="signin-phno">Phone number</label>
+                        <label for="signin-phno" id="signin-phno-label">Phone number</label>
+                        <span class="error-msg" id="signin-phno-error"></span>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" minlength="6" maxlength="15" id="signin-password" placeholder="">
+                        <label for="signin-password" id="signin-psw-label">Password</label>
+                        <span class="error-msg" id="signin-psw-error"></span>
                     </div>
                 </div>
-                <button id="login-btn">LOGIN</button>
+                <button id="login-btn" onclick="loginContinue()">LOGIN</button>
                 <div class="login-terms">
                     <p>By clicking on Login, I accept the <span>Terms & Conditions</span> & <span>Privacy Policy</span>
                     </p>

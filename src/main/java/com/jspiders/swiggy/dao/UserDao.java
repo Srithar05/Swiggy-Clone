@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jspiders.swiggy.entity.User;
+import com.jspiders.swiggy.exception.EmailAlreadyExistsException;
+import com.jspiders.swiggy.exception.PhonenoAlreadyExistsException;
 import com.jspiders.swiggy.exception.UserNotFoundException;
 import com.jspiders.swiggy.repository.UserRepository;
 
@@ -16,8 +18,16 @@ public class UserDao {
 	private UserRepository userRepository;
 
 	public User registerUser(User user) {
-		User registeredUser = userRepository.save(user);
-		return registeredUser;
+		if(userRepository.existsByPhone(user.getPhone()))
+		{
+			throw new PhonenoAlreadyExistsException("Phone number already registered! Please login.");
+		}
+		if(userRepository.existsByEmail(user.getEmail()))
+		{
+			throw new EmailAlreadyExistsException("Email already registered! Please login.");
+		}
+		
+		return userRepository.save(user);
 	}
 
 	public User login(String phone) {

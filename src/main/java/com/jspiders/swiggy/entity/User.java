@@ -32,6 +32,6 @@ public class User {
 	
 	@NotBlank(message = "Password is required")
 	@Pattern(regexp = "^[a-zA-Z0-9@$#]*$", message = "Password can contain letters, numbers and @ $ # symbols only")
-	@Size(min = 5, max = 16)
+	@Size(min = 6, max = 15, message = "Password must be between 6 and 15 characters")
 	private String password;
 }
