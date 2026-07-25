@@ -77,7 +77,7 @@ async function loginContinue(){
     signinfailedmsg.innerText = ""
     loginBtn.innerText = "LOGIN"
     try{
-        let response = await fetch("http://localhost:8080/auth/login",{
+        let response = await fetch("/auth/login",{
             method : "POST",
             headers : { "Content-Type" : "application/json"},
             body : JSON.stringify(loginData)
@@ -225,7 +225,7 @@ async function signupContinue(){
     signupBtn.innerText = "CONTINUE"
 
     try {
-        let response = await fetch("http://localhost:8080/auth/register",{
+        let response = await fetch("/auth/register",{
             method : "POST",
             headers : { "Content-Type" : "application/json"},
             body : JSON.stringify(userData)
