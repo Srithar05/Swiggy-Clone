@@ -6,15 +6,14 @@ function gotoDownload(){
     })
 }
 
-var sidenavbar = document.querySelector(".side-navbar");
 function Opennavbar()
 {
-    sidenavbar.style.left = "0";
+    document.querySelector(".side-navbar").style.left = "0";
 }
 
 function Closenavbar()
 {
-    sidenavbar.style.left = "-50%";
+    document.querySelector(".side-navbar").style.left = "-50%";
 }
 
 var overlaycontainer = document.querySelector(".overlay-container")
@@ -370,7 +369,7 @@ function showfoodcities(){
     const extrafoodcities = document.querySelectorAll(".extra-food-cities")
     if(isFoodOpen = !isFoodOpen)
     {
-        extrafoodcities.forEach(e=>e.style.display="block");
+        extrafoodcities.forEach(e=>e.style.display="flex");
         citiescontainer.appendChild(morecitiesbtn);
         morecitiesbtn.innerHTML = 'Show Less <i class="fa-solid fa-angle-up fa-lg rotated" id="toggle-icon" style="color: #FF5200;"></i>';
     }
@@ -389,7 +388,7 @@ function showgrocerycities(){
     const extragrocerycities = document.querySelectorAll(".extra-grocery-cities")
     if(isGroceryOpen = !isGroceryOpen)
     {
-        extragrocerycities.forEach(e=>e.style.display="block");
+        extragrocerycities.forEach(e=>e.style.display="flex");
         grocerycitiescontainer.appendChild(moregrocerycitiesbtn);
         moregrocerycitiesbtn.innerHTML = 'Show Less <i class="fa-solid fa-angle-up fa-lg rotated" id="toggle-icon" style="color: #FF5200;"></i>';
     }

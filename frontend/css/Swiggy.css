@@ -89,6 +89,9 @@ body{
     text-align: end;
     cursor: pointer;
 }
+.side-navbar-items{
+    margin-top: 10px;
+}
 .side-navbar-item{
     margin-bottom: 40px;
 }
@@ -609,6 +612,9 @@ footer p:hover{
     #partner-btn{
         display: none;
     }
+    .auth-section{
+        width: 60%;
+    }
     .footer-download{
         margin: 0 auto;
         justify-content: center;
@@ -656,11 +662,26 @@ footer p:hover{
     .main-head{
         height: 550px;
     }
+    .auth-section{
+        width: 75%;
+    }
+    .location-symbol{
+        font-size: 20px !important;
+    }
     #head-input-sub1{
         height: 50px;
+        padding: 0px 8px;
+    }
+    #head-input-sub1>input{
+        padding-left: 0px;
+        padding-right: 5px;
+    }
+    .head-sub-div>input::placeholder{
+        font-size: 12px;
     }
     #head-input-sub2{
         height: 50px;
+        padding: 0px 8px 0px 10px;
     }
     .food-option{
         height: 300px;
@@ -751,9 +772,5 @@ footer p:hover{
         margin-right:0px;
         padding-right:0;
         margin-top:20px;
-    }
-    .available-cities{
-        width:120px;
-        margin-top:18px;
     }
 }
