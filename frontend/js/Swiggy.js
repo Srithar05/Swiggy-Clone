@@ -260,7 +260,7 @@ async function signupContinue(){
         {
             console.log(data)
             document.getElementById("success-msg").style.display = "block";
-            resetSignupForm();
+            resetAuthForm();
             setTimeout(()=>{
                 signin();
             },2000);
@@ -282,7 +282,6 @@ async function signupContinue(){
                 document.getElementById("signup-phno-label").classList.add("label-error");
             }
         }
-
     } catch (error) {
         signupfailedMsg.innerText = "Signup failed. Please try again.";
         signupBtn.innerHTML = "TRY AGAIN";
