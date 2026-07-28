@@ -1,8 +1,20 @@
 function gotoDownload(){
+    document.getElementById("side-navbar-open").style.display = "none";
     document.getElementById("download-img").scrollIntoView({
         behavior:"smooth",
         block:"start"
     })
+}
+
+var sidenavbar = document.querySelector(".side-navbar");
+function Opennavbar()
+{
+    sidenavbar.style.left = "0";
+}
+
+function Closenavbar()
+{
+    sidenavbar.style.left = "-50%";
 }
 
 var overlaycontainer = document.querySelector(".overlay-container")
@@ -10,6 +22,14 @@ var authsection = document.querySelector(".auth-section")
 var signinphno = document.getElementById("signin-phno")
 function login()
 {
+    overlaycontainer.style.display = "block";
+    authsection.style.display = "block";
+    document.body.style.overflow = "hidden";
+    authsection.style.animationName = "signin-open";
+    signinphno.focus();
+}
+function mobilelogin(){
+    document.getElementById("side-navbar-open").style.display = "none";
     overlaycontainer.style.display = "block";
     authsection.style.display = "block";
     document.body.style.overflow = "hidden";

@@ -9,7 +9,7 @@ body{
     font-weight: bold;
 }
 .main-head{
-    height: 770px;
+    height: 800px;
     width: 100%;
     background-color: #ff5200;
     position: relative;
@@ -23,15 +23,18 @@ body{
     height: 48px;
     width: 160px;
     cursor: pointer;
+    margin-right: 50px;
 }
 .sub-header{
     height: 54px;
-    width: 80%;
+    width: 90%;
     margin: auto;
     display: flex;
     justify-content: space-between;
+    
 }
 .navbar>ul{
+    width: auto;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -49,29 +52,58 @@ body{
     color: white;
     font-size: 16px;
 }
-#app-btn{
+.navbar-btns{
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 54px;
     width: 145px;
     border: 1px solid white;
-    padding: 12px 0px 12px 16px;
     border-radius: 15px;   
-}
-#app-btn>img{
-    padding-left: 5px;
 }
 #signin-btn{
     background-color: black;
     height: 54px;
     width: 130px;
-    display: grid;
+    display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
     border-radius: 15px;
 }
 #signin-btn:hover{
     color: #ff7535;
+}
+.side-navbar{
+    background-color:black;
+    color: white;
+    width: 40%;
+    height: 100%;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: -50%;
+    transition: 0.5s;
+    z-index: 3;
+}
+.side-navbar-close{
+    text-align: end;
+    cursor: pointer;
+}
+.side-navbar-item{
+    margin-bottom: 40px;
+}
+.side-navbar-item p{
+    color: white;
+    padding-left: 10px;
+}
+.side-navbar-item p:hover{
+    color: rgb(252, 245, 235);
+    text-decoration: underline;
+}
+.navbar-menu-togglebar{
+    display: none;
+    margin: auto;
+    cursor: pointer;
 }
 .overlay-container{
     position: fixed;
@@ -240,31 +272,33 @@ body{
     cursor: pointer;
 }
 .main-content{
-    font-size: 48px;
+    font-size: 3rem;
     color: white;
-    width: 800px;
-    height: 100px;
+    width: 65%;
+    height: auto;
     text-align: center;
-    margin: 70px auto 0px auto;
+    margin: 40px auto 60px auto;
 }
 .main-left-img{
-    height: 450px;
-    width: 250px;
+    height: auto;
+    width: 20%;
     position: absolute;
     top: 120px;
     left: 0px;
 }
 .main-right-img{
-    height: 450px;
-    width: 250px;
+    height: auto;
+    width: 20%;
     position: absolute;
     top: 120px;
     right: 0px;
 }
 .head-input-div{
     display: flex;
-    margin-top: 40px;
-    margin-left: 250px;
+    justify-content: center;
+    gap: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 .head-sub-div{
     background-color: white;
@@ -276,7 +310,7 @@ body{
 }
 #head-input-sub1{
     height: 60px;
-    width: 350px;
+    width: auto;
     padding: 0px 20px;
 }
 .location-symbol{
@@ -292,7 +326,7 @@ body{
     caret-color: #FF5200;
 }
 #head-input-sub1>input{
-    padding-left: 20px;
+    padding-left: 10px;
 }
 .head-sub-div>input:focus{
     outline: none;
@@ -302,17 +336,20 @@ body{
 }
 #head-input-sub2{
     height: 60px;
-    width: 400px;
+    width: auto;
     padding: 0px 20px 0px 30px;
-    margin-left: 30px;
+}
+#head-input-sub2>input{
+    padding-right: 10px;
 }
 .head-category{
-    height: 350px;
+    height: auto;
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 20px auto;
+    padding-top: 30px;
 }
 .category-option{
     width: 35%;
@@ -321,8 +358,8 @@ body{
 }
 .food-option{
     height: 400px;
-    width: 80%;
-    margin: 100px auto;
+    width: 90%;
+    margin: 70px auto;
 }
 .food-pic{
     height: 180px;
@@ -333,18 +370,16 @@ body{
 .food-head-div{
     height: 30px;
     width: 100%;
-    padding-bottom: 50px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    position: relative;
-    top: 0;
-    left: 0;
+    padding-bottom: 30px;
 }
 .icon-main-div{
     height: 30px;
-    width: 100px;
+    width: 75px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 .icon-div1,.icon-div2{
     background-color: rgb(212, 208, 208);
@@ -373,8 +408,8 @@ body{
 }
 .head-groceries-div{
     height: 300px;
-    width: 80%;
-    margin: 100px auto;
+    width: 90%;
+    margin: 60px auto;
 }
 #grocery-leftarrow{
     opacity: 0.6;
@@ -399,14 +434,14 @@ body{
 }
 .groceries-option>div{
     width: 120px;
-    margin: 0px 30px;
+    margin: 5px 30px;
     height: 50px;
     text-align: center;
     font-size: 18px;
     color: rgb(63, 62, 62);
 }
 .food-cities{
-    width: 72%;
+    width: 90%;
     margin: 70px auto;
 }
 .city-name:hover{
@@ -420,6 +455,7 @@ body{
 }
 .body-food-cities{
     display: flex;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 30px;
 }
@@ -464,14 +500,14 @@ body{
 }
 footer{
     background-color: #F0F0F5;
-    height: 590px;
+    height: auto;
 }
 .footer-details{
     padding: 50px 0px;
     margin: 0px auto;
     display: flex;
     justify-content: space-between;
-    width: 900px;
+    width: 90%;
     height: 450px;
 }
 .footer-details p{
@@ -509,19 +545,32 @@ footer{
     width: 90%;
     margin: 0 auto;
 }
-.footer-download{
+#footer-download-head{
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: 85%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    margin: 40px auto;
+    justify-content: center;
+    margin: auto;
+    gap: 20px;
 }
 .footer-download img{
     transition: 0.3s ease;
+    height: 65px;
+    width: 200px;
+}
+#footer-download-content-sm{
+    display: none;
 }
 .footer-download img:hover{
     transform: scale(1.05);
     cursor: pointer;
+}
+#download-option{
+    display: flex;
+    gap: 40px;
 }
 footer p:hover{
     cursor: pointer;
@@ -532,4 +581,179 @@ footer p:hover{
 }
 .footer-links:hover{
     cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    .navbar ul{
+        gap:12px;
+    }
+    .navbar-btns{
+        width:120px;
+        height:46px;
+        font-size:14px;
+    }
+    #signin-btn{
+        width:110px;
+        height:46px;
+        font-size:14px;
+    }
+    .navbar a{
+        font-size:14px;
+    }
+    .main-content{
+        font-size: 2rem;
+    }
+    .main-head{
+        height: 650px;
+    }
+    #partner-btn{
+        display: none;
+    }
+    .footer-download{
+        margin: 0 auto;
+        justify-content: center;
+    }
+    .footer-download img{
+        height: 45px;
+        width: 150px;
+    }
+    #footer-download-content{
+        font-size: 20px;
+    }
+    .footer-details{
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 40px;
+        height: auto;
+        padding: 40px 20px;
+    }
+    .footer-details > div{
+        width: 45%;
+    }
+    .footer-links{
+        margin-top: 30px;
+    }
+    .footer-legal{
+        margin-top: 30px;
+    }
+    .footer-links i{
+        margin-right: 15px;
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .navbar{
+        display: none;
+    }
+    .navbar-menu-togglebar{
+        display: block;
+        margin-right: 25px;
+    }
+    .main-content{
+        font-size: 1.5rem;
+    }
+    .main-head{
+        height: 550px;
+    }
+    #head-input-sub1{
+        height: 50px;
+    }
+    #head-input-sub2{
+        height: 50px;
+    }
+    .food-option{
+        height: 300px;
+    }
+    .food-pic{
+        height: 140px;
+        width: 120px;
+    }
+    #food-head-heading{
+        font-size: 20px;
+    }
+    #grocery-head-heading{
+        font-size: 20px;
+    }
+    .grocery-pic{
+        height: 140px;
+        width: 120px;
+    }
+    .head-groceries-div{
+        height: 250px;
+    }
+    .groceries-option{
+        height: 230px;
+    }
+    .groceries-option>div{
+        width: 70px;
+        font-size: 15px;
+    }
+    #cities-head-heading{
+        font-size: 20px;
+    }
+    .city-name{
+        height: 55px;
+        width: 145px;
+        font-size: 12px;
+    }
+    .more-cities{
+        height: 55px;
+        width: 145px;
+        font-size: 12px;
+    }
+    #cities-grocery-heading{
+        font-size: 20px;
+    }
+    .footer-download img{
+        height: 40px;
+        width: 130px;
+    }
+    #footer-download-content{
+        display: none;
+    }
+    #footer-download-content-sm{
+        display: block;
+        font-size: 17px;
+    }
+    .footer-details{
+        display:grid;
+        grid-template-columns: repeat(2,1fr);
+        gap:35px 25px;
+        width:90%;
+        margin:auto;
+        padding:40px 0;
+        height:auto;
+    }
+    .footer-details>div{
+        width:100%;
+    }
+    .footer-logo{
+        grid-column:1 / -1; 
+    }
+    .footer-details h3{
+        font-size:22px;
+        margin-bottom:10px;
+    }
+    .footer-details p{
+        font-size:16px;
+        padding-top:16px;
+        line-height:1.4;
+    }
+    .footer-legal,
+    .footer-links{
+        padding-top: 40px;
+    }
+    .footer-details h3{
+        font-size: 17px;
+    }
+    .footer-links i{
+        margin-right:0px;
+        padding-right:0;
+        margin-top:20px;
+    }
+    .available-cities{
+        width:120px;
+        margin-top:18px;
+    }
 }

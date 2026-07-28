@@ -31,18 +31,14 @@
     <div class="main-head">
         <div class="header">
             <div class="sub-header">
-                <img alt="" class="header-logo" height="100%" loading="lazy" width="100%"
-                    src="./images/swiggy_logo_white.avif">
+                <img alt="Swiggy logo" class="header-logo" loading="lazy" src="./images/swiggy_logo_white.avif">
                 <div class="navbar">
                     <ul>
-                        <a href="">
-                            <li>Swiggy Corporate</li>
-                        </a>
-                        <a href="">
-                            <li>Partner with us</li>
-                        </a>
                         <li>
-                            <div id="app-btn" onclick="gotoDownload()">
+                            <div id="partner-btn" class="navbar-btns">Partner with us</div>
+                        </li>
+                        <li>
+                            <div id="app-btn" class="navbar-btns" onclick="gotoDownload()">
                                 Get the App
                                 <img src="./images/arrow_outward_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png"
                                     alt="symbol">
@@ -53,11 +49,22 @@
                         </li>
                     </ul>
                 </div>
+                <div class="navbar-menu-togglebar">
+                    <i onclick="Opennavbar()" class="fa-solid fa-bars" style="color: rgb(255, 255, 255);"></i>
+                </div>
+                <div class="side-navbar" id="side-navbar-open">
+                    <p class="side-navbar-close"><i onclick="Closenavbar()" class="fa-solid fa-xmark"></i></p>
+                    <div class="side-navbar-items">
+                        <p class="side-navbar-item" onclick="mobilelogin()">Sign in</p>
+                        <p class="side-navbar-item" onclick="gotoDownload()">Get the App</p>
+                        <p class="side-navbar-item">Partner with us</p>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="overlay-container" onclick="closelogin()"></div>
-        
+
         <div id="success-msg">Signup successfull <span style="color: black;">Please login.</span></div>
 
         <div class="auth-section">
@@ -71,7 +78,7 @@
                     </div>
                     <div class="login-img">
                         <img width="100" height="105" imageid="" alt="img renderer"
-                        src="./images/login_page_image.avif">
+                            src="./images/login_page_image.avif">
                     </div>
                 </div>
                 <div id="signin-failed-msg"></div>
@@ -104,18 +111,19 @@
                     </div>
                     <div class="login-img">
                         <img width="100" height="105" imageid="" alt="img renderer"
-                        src="./images/login_page_image.avif">
+                            src="./images/login_page_image.avif">
                     </div>
                 </div>
                 <div id="signup-failed-msg"></div>
                 <div class="signin-inputdiv">
-                    <div class="input-field"> 
+                    <div class="input-field">
                         <input type="text" id="signup-name" placeholder="">
                         <label for="signup-name" id="signup-name-label">Name</label>
                         <span class="error-msg" id="name-error"></span>
                     </div>
                     <div class="input-field">
-                        <input type="text" id="signup-phno" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="">
+                        <input type="text" id="signup-phno" maxlength="10"
+                            oninput="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="">
                         <label for="signup-phno" id="signup-phno-label">Phone number</label>
                         <span class="error-msg" id="phno-error"></span>
                     </div>
@@ -123,7 +131,7 @@
                         <input type="email" id="signup-email" placeholder="">
                         <label for="signup-email" id="signup-email-label">Email</label>
                         <span class="error-msg" id="email-error"></span>
-                    </div> 
+                    </div>
                     <div class="input-field">
                         <input type="password" minlength="6" maxlength="15" id="signup-password" placeholder="">
                         <label for="signup-password" id="signup-psw-label">Password</label>
@@ -132,7 +140,8 @@
                 </div>
                 <button id="signup-btn" onclick="signupContinue()">CONTINUE</button>
                 <div class="login-terms">
-                    <p>By creating an account, I accept the <span>Terms & Conditions</span> & <span>Privacy Policy</span>
+                    <p>By creating an account, I accept the <span>Terms & Conditions</span> & <span>Privacy
+                            Policy</span>
                     </p>
                 </div>
             </div>
@@ -153,7 +162,7 @@
                 <i class="fa-solid fa-angle-down fa-xl" style="color:rgb(103, 102, 102)"></i>
             </div>
             <div class="head-sub-div" id="head-input-sub2">
-                <input type="text" placeholder="Search for restaurent, item or more">
+                <input type="text" placeholder="Search for food items or more">
                 <i class="fa-solid fa-magnifying-glass fa-xl" style="color:rgb(103, 102, 102)"></i>
             </div>
         </div>
@@ -168,7 +177,7 @@
 
     <div class="food-option">
         <div class="food-head-div">
-            <h2>Order our best food options</h2>
+            <h2 id="food-head-heading">Order our best food options</h2>
             <div class="icon-main-div">
                 <div class="icon-div1" id="food-leftarrow" onclick="foodscrollleft()">
                     <i class="fa-solid fa-arrow-left"></i>
@@ -232,7 +241,7 @@
 
     <div class="head-groceries-div">
         <div class="food-head-div">
-            <h2>Shop groceries on Instamart</h2>
+            <h2 id="grocery-head-heading">Shop groceries on Instamart</h2>
             <div class="icon-main-div">
                 <div class="icon-div1" id="grocery-leftarrow" onclick="groceriesscrollleft()">
                     <i class="fa-solid fa-arrow-left"></i>
@@ -310,7 +319,7 @@
 
     <div class="food-cities">
         <div class="head-food-cities">
-            <h2>Cities with food delivery</h2>
+            <h2 id="cities-head-heading">Cities with food delivery</h2>
         </div>
         <div class="body-food-cities" id="cities-container">
             <div class="city-name">Order food online in Bangalore</div>
@@ -322,10 +331,8 @@
             <div class="city-name">Order food online in Tirunelveli</div>
             <div class="city-name">Order food online in Jaipur</div>
             <div class="city-name">Order food online in Kolkata</div>
-            <div class="city-name">Order food online in Ahmedabad</div>
-            <div class="city-name">Order food online in Gujarat</div>
-            <div class="more-cities" id="more-cities-btn" onclick="showfoodcities()">Show More <i class="fa-solid fa-angle-down fa-lg"
-                    style="color: #FF5200;"></i>
+            <div class="more-cities" id="more-cities-btn" onclick="showfoodcities()">Show More <i
+                    class="fa-solid fa-angle-down fa-lg" style="color: #FF5200;"></i>
             </div>
             <div class="city-name extra-food-cities">Order food online in Kerala</div>
             <div class="city-name extra-food-cities">Order food online in Noida</div>
@@ -337,41 +344,35 @@
             <div class="city-name extra-food-cities">Order food online in Goa</div>
             <div class="city-name extra-food-cities">Order food online in Trichy</div>
             <div class="city-name extra-food-cities">Order food online in Madurai</div>
-            <div class="city-name extra-food-cities">Order food online in Selam</div>
-            <div class="city-name extra-food-cities">Order food online in Patna</div>
         </div>
     </div>
     <div class="food-cities">
         <div class="head-food-cities">
-            <h2>Cities with grocery delivery</h2>
+            <h2 id="cities-grocery-heading">Cities with grocery delivery</h2>
         </div>
         <div class="body-food-cities" id="grocery-cities-container">
             <div class="city-name">Order grocery delivery in Chennai</div>
             <div class="city-name">Order grocery delivery in Mumbai</div>
-            <div class="city-name">Order grocery delivery in Pune</div>
-            <div class="city-name">Order grocery delivery in Delhi</div>
+            <div class="city-name">Order grocery delivery in Madurai</div>
+            <div class="city-name">Order grocery delivery in Myzoore</div>
             <div class="city-name">Order grocery delivery in Kolkata</div>
             <div class="city-name">Order grocery delivery in Tirunelveli</div>
             <div class="city-name">Order grocery delivery in Ahmedabad</div>
             <div class="city-name">Order grocery delivery in Gujarat</div>
-            <div class="city-name">Order grocery delivery in Hyderabad</div>
             <div class="city-name">Order grocery delivery in Bangalore</div>
-            <div class="city-name">Order grocery delivery in Jaipur</div>
-            <div class="more-cities" id="more-grocery-cities-btn" onclick="showgrocerycities()">Show More <i class="fa-solid fa-angle-down fa-lg"
-                    style="color: #FF5200;"></i>
+            <div class="more-cities" id="more-grocery-cities-btn" onclick="showgrocerycities()">Show More <i
+                    class="fa-solid fa-angle-down fa-lg" style="color: #FF5200;"></i>
             </div>
             <div class="city-name extra-grocery-cities">Order grocery delivery in Goa</div>
             <div class="city-name extra-grocery-cities">Order grocery delivery in Trichy</div>
-            <div class="city-name extra-grocery-cities">Order grocery delivery in Madurai</div>
+            <div class="city-name extra-grocery-cities">Order grocery delivery in Pune</div>
             <div class="city-name extra-grocery-cities">Order grocery delivery in Selam</div>
             <div class="city-name extra-grocery-cities">Order grocery delivery in Patna</div>
-            <div class="city-name extra-grocery-cities">Order grocery delivery in Kerala</div>
+            <div class="city-name extra-grocery-cities">Order grocery delivery in Delhi</div>
             <div class="city-name extra-grocery-cities">Order grocery delivery in Noida</div>
             <div class="city-name extra-grocery-cities">Order grocery delivery in Vaizak</div>
             <div class="city-name extra-grocery-cities">Order grocery delivery in Myzoore</div>
             <div class="city-name extra-grocery-cities">Order grocery delivery in Ooty</div>
-            <div class="city-name extra-grocery-cities">Order grocery delivery in Bhobal</div>
-            <div class="city-name extra-grocery-cities">Order grocery delivery in Kochi</div>
         </div>
     </div>
 
@@ -414,10 +415,6 @@
                 <p>Mumbai</p>
                 <p>Delhi</p>
                 <p>Pune</p>
-                <div class="available-cities">
-                    <p>685 cities</p>
-                    <i class="fa-solid fa-angle-down" style="color: grey;"></i>
-                </div>
             </div>
             <div>
                 <div class="footer-life">
@@ -437,15 +434,20 @@
             </div>
         </div>
         <hr id="hr-line">
-        <div class="footer-download">
-            <h2>For better experience, download the Swiggy app now</h2>
-            <a href="https://apps.apple.com/in/app/swiggy-food-instamart-dineout/id989540920" target="_blank">
-                <img alt="" src="./images/appstore-logo-img.svg" height="65" width="200">
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=in.swiggy.android&referrer=utm_source%3Dswiggy%26utm_medium%3Dheader"
-            target="_blank">
-                <img alt="" src="./images/playstore-logo-img.webp" height="65" width="200">
-            </a> 
+        <div id="footer-download-head">
+            <h2 id="footer-download-content">For better experience, download the Swiggy app</h2>
+            <h2 id="footer-download-content-sm">Download the Swiggy app now</h2>
+            <div class="footer-download">
+                <div id="download-option">
+                    <a href="https://apps.apple.com/in/app/swiggy-food-instamart-dineout/id989540920" target="_blank">
+                        <img alt="App store image" src="./images/appstore-logo-img.svg" class="download-img">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=in.swiggy.android&referrer=utm_source%3Dswiggy%26utm_medium%3Dheader"
+                        target="_blank">
+                        <img alt="Playstore image" src="./images/playstore-logo-img.webp" class="download-img">
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
