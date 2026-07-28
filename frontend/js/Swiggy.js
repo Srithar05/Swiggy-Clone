@@ -1,5 +1,5 @@
 function gotoDownload(){
-    document.getElementById("side-navbar-open").style.display = "none";
+    document.getElementById("side-navbar-open").style.left = "-50%";
     document.getElementById("download-img").scrollIntoView({
         behavior:"smooth",
         block:"start"
@@ -16,11 +16,12 @@ function Closenavbar()
     document.querySelector(".side-navbar").style.left = "-50%";
 }
 
-var overlaycontainer = document.querySelector(".overlay-container")
-var authsection = document.querySelector(".auth-section")
-var signinphno = document.getElementById("signin-phno")
 function login()
 {
+    var overlaycontainer = document.querySelector(".overlay-container");
+    var authsection = document.querySelector(".auth-section");
+    var signinphno = document.getElementById("signin-phno");
+
     overlaycontainer.style.display = "block";
     authsection.style.display = "block";
     document.body.style.overflow = "hidden";
@@ -28,12 +29,17 @@ function login()
     signinphno.focus();
 }
 function mobilelogin(){
-    document.getElementById("side-navbar-open").style.display = "none";
-    overlaycontainer.style.display = "block";
-    authsection.style.display = "block";
+    var overlaycontainersm = document.querySelector(".overlay-container");
+    var authsectionsm = document.querySelector(".auth-section");
+    var signinphnosm = document.getElementById("signin-phno");
+
+    document.getElementById("side-navbar-open").style.left = "-50%";
+    document.getElementById("side-navbar-open").style.transition = "0.5s";
+    overlaycontainersm.style.display = "block";
+    authsectionsm.style.display = "block";
     document.body.style.overflow = "hidden";
-    authsection.style.animationName = "signin-open";
-    signinphno.focus();
+    authsectionsm.style.animationName = "signin-open";
+    signinphnosm.focus();
 }
 
 function validateSignin(){
@@ -144,7 +150,7 @@ function signin(){
     signuppage.style.display = "none";
     document.getElementById("signup-failed-msg").innerText = "";
     document.getElementById("signup-btn").innerText = "CONTINUE";
-    signinphno.focus();
+    document.getElementById("signin-phno").focus();
 }
 
 function resetAuthForm() {
@@ -283,12 +289,16 @@ async function signupContinue(){
     }
 }
 
+
 function closelogin(){
-    authsection.style.animationName = "signin-close";
-    overlaycontainer.style.display = "none";
+    var overlaycontainercl = document.querySelector(".overlay-container");
+    var authsectioncl = document.querySelector(".auth-section");
+    
+    authsectioncl.style.animationName = "signin-close";
+    overlaycontainercl.style.display = "none";
 
     setTimeout(()=>{
-        authsection.style.display = "none";
+        authsectioncl.style.display = "none";
         document.body.style.overflow = "auto";
         resetAuthForm();
     },450);
