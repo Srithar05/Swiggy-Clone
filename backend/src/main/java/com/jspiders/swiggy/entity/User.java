@@ -21,7 +21,6 @@ public class User {
 	@Size(min = 3, max = 15, message = "Name should contain 3 to 15 characters")
 	private String userName;
 	
-	
 	@NotBlank(message = "Phone number is required")
 	@Pattern(regexp = "^[0-9]{10}$", message = "Phone number must contain exactly 10 digits")
 	private String phone;

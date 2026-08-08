@@ -108,8 +108,10 @@ async function loginContinue(){
         password : document.getElementById("signin-password").value.trim()
     }
 
+    loginBtn.disabled = true ; 
+    loginBtn.innerText = "Login..."
+
     signinfailedmsg.innerText = ""
-    loginBtn.innerText = "LOGIN"
     try{
         let response = await fetch("https://swiggy-clone-fg8k.onrender.com/auth/login",{
             method : "POST",
@@ -145,7 +147,10 @@ async function loginContinue(){
     }
     catch(error){
         signinfailedMsg.innerText = "Login failed. Please try again.";
-        loginBtn.innerHTML = "TRY AGAIN";
+    }
+    finally{
+        loginBtn.disabled = false ; 
+        loginBtn.innerText = "LOGIN"
     }
 }
 
@@ -258,8 +263,10 @@ async function signupContinue(){
         password : document.getElementById("signup-password").value.trim()
     }
 
+    signupBtn.disabled = true ; 
+    signupBtn.innerText = "Registering..."
+
     signupfailedMsg.innerText = ""
-    signupBtn.innerText = "CONTINUE"
 
     try {
         let response = await fetch("https://swiggy-clone-fg8k.onrender.com/auth/register",{
@@ -297,6 +304,10 @@ async function signupContinue(){
     } catch (error) {
         signupfailedMsg.innerText = "Signup failed. Please try again.";
         signupBtn.innerHTML = "TRY AGAIN";
+    }
+    finally{
+        signupBtn.disabled = false ; 
+        signupBtn.innerText = "CONTINUE"
     }
 }
 
