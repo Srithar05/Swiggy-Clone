@@ -1,3 +1,12 @@
+/*Cold start the backend*/
+fetch("https://swiggy-clone-fg8k.onrender.com/user/start")
+    .then(response => {
+        console.log("Backend status:", response.status);
+    })
+    .catch(error => {
+        console.log("Backend is starting...");
+    });
+    
 function gotoDownload(){
     document.getElementById("side-navbar-open").style.left = "-50%";
     document.getElementById("download-img").scrollIntoView({
@@ -114,6 +123,9 @@ async function loginContinue(){
             console.log(data)
             successmsg.innerText = "Login successfull"
             successmsg.style.display = "block";
+            document.getElementById("signin-btn").style.display = "none";
+            document.getElementById("profile-btn").style.display = "flex";
+            document.getElementById("profilename").innerText = data.data.userName;
             setTimeout(()=>{
                 closelogin();
                 successmsg.innerText = ""

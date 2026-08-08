@@ -73,6 +73,20 @@ body{
 #signin-btn:hover{
     color: #ff7535;
 }
+#profile-btn{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 54px;
+    width: fit-content;
+    padding: 0 20px;
+    border: 1px solid white;
+    border-radius: 15px;   
+}
+#profilename{
+    font-weight: 300;
+}
 .side-navbar{
     background-color:black;
     color: white;
@@ -591,6 +605,10 @@ footer p:hover{
     }
     .navbar-btns{
         width:120px;
+        height:46px;
+        font-size:14px;
+    }
+    #profile-btn{
         height:46px;
         font-size:14px;
     }
