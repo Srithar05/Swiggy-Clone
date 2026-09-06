@@ -394,6 +394,14 @@ grocerieslines.addEventListener("scroll",()=>{
     }
 })
 
+const categoryCards = document.querySelectorAll(".food-pic");
+categoryCards.forEach(card => {
+    card.addEventListener("click",()=>{
+        const categoryId = card.dataset.categoryId;
+        window.location.href = `collections.html?categoryId=${categoryId}`;
+    });
+});
+
 let isFoodOpen = false
 function showfoodcities(){
     const morecitiesbtn = document.getElementById("more-cities-btn")

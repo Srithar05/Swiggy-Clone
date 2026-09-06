@@ -85,4 +85,16 @@ public class UserExceptionController {
 		
 		return new ResponseEntity<>(apiError, HttpStatus.UNAUTHORIZED);
 	}
+	
+	@ExceptionHandler( value = InvalidIdException.class)
+	public ResponseEntity<?> invalidIdException(InvalidIdException e, HttpServletRequest req) {
+		APIError apiError = new APIError();
+		apiError.setTimeStamp(LocalDateTime.now());
+		apiError.setError(HttpStatus.NOT_FOUND.getReasonPhrase());
+		apiError.setStatus(HttpStatus.NOT_FOUND.value());
+		apiError.setPath(req.getRequestURI());
+		apiError.setMessage(e.getMessage());
+		
+		return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+	}
 }
