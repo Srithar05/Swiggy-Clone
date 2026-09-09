@@ -5,7 +5,7 @@ console.log("Category Id : ",categoryId);
 const foodContainer = document.getElementById("foodContainer");
 const foodCategoryName = document.getElementById("food-name-head");
 
-fetch(`http://localhost:8080/food/category/${categoryId}`)
+fetch(`https://swiggy-clone-fg8k.onrender.com/food/category/${categoryId}`)
 .then(response => response.json())
 .then(responseData => {
     console.log(responseData);
