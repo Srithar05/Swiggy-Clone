@@ -3,11 +3,19 @@ const categoryId = params.get("categoryId");
 console.log("Category Id : ",categoryId);
 
 const foodContainer = document.getElementById("foodContainer");
+const foodCategoryName = document.getElementById("food-name-head");
 
-fetch("http://localhost:8080/food/category/${categoryId}")
+fetch(`http://localhost:8080/food/category/${categoryId}`)
 .then(response => response.json())
-.then(foods => {
-    console.log(foods);
+.then(responseData => {
+    console.log(responseData);
+    const foods = responseData.data;
+
+    foodCategoryName.innerHTML = `
+    <h1 id="category-name">${foods[0].category.name}</h1>
+    <p id="category-description">${foods[0].category.description}</p>`
+
+    foodContainer.innerHTML = "";
     foods.forEach(food => {
         const card = document.createElement("div");
         card.classList.add("food-card");
