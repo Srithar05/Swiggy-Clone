@@ -402,6 +402,14 @@ categoryCards.forEach(card => {
     });
 });
 
+const groceryCards = document.querySelectorAll(".grocery-pic");
+groceryCards.forEach(card => {
+    card.addEventListener("click",()=>{
+        const groceryId = card.getAttribute("groceryId");
+        window.location.href = `collections.html?groceryId=${groceryId}`;
+    });
+});
+
 let isFoodOpen = false
 function showfoodcities(){
     const morecitiesbtn = document.getElementById("more-cities-btn")
