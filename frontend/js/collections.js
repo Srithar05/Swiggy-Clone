@@ -5,8 +5,36 @@ const groceryId = params.get("groceryId");
 const foodContainer = document.getElementById("foodContainer");
 const foodCategoryName = document.getElementById("food-name-head");
 
+function showLoading(container) {
+
+    container.innerHTML = `
+        <div class="loading-container">
+
+            <div class="loader"></div>
+
+            <p>Loading...</p>
+
+        </div>
+    `;
+}
+
+function showError(container) {
+
+    container.innerHTML = `
+        <div class="loading-container">
+
+            <p>Unable to load data.</p>
+
+            <p>Please try again.</p>
+
+        </div>
+    `;
+}
+
+
 if(categoryId){
     console.log("Category Id : ",categoryId);
+    showLoading(foodContainer);
     fetch(`https://swiggy-clone-fg8k.onrender.com/food/category/${categoryId}`)
     .then(response => response.json())
     .then(responseData => {
@@ -42,10 +70,12 @@ if(categoryId){
     })
     .catch(error => {
         console.error("Error loading foods:",error);
+        showError(foodContainer);
     });
 }
 if(groceryId){
     console.log("Grocery Id : "+groceryId);
+    showLoading(foodContainer);
     fetch(`https://swiggy-clone-fg8k.onrender.com/grocery/category/${groceryId}`)
     .then(response => response.json())
     .then(responseData => {
@@ -53,8 +83,8 @@ if(groceryId){
         const foods = responseData.data;
 
         foodCategoryName.innerHTML = `
-        <h1 id="category-name">${foods[0].category.name}</h1>
-        <p id="category-description">${foods[0].category.description}</p>`
+        <h1 id="category-name">${foods[0].grocery.name}</h1>
+        <p id="category-description">${foods[0].grocery.description}</p>`
 
         foodContainer.innerHTML = "";
         foods.forEach(food => {
@@ -68,7 +98,7 @@ if(groceryId){
                 <h3>${food.name}</h3>
                 <p class="food-description">${food.description}</p>
                 <div class="food-info">
-                    <span class="food-rating">${food.weight} Ratings</span>
+                    <span class="food-rating">${food.weight}</span>
                     <span class="food-price">₹ ${food.price}</span>
                 </div>
                 <div class="food-buttons-container">
@@ -81,5 +111,6 @@ if(groceryId){
     })
     .catch(error => {
         console.error("Error loading foods:",error);
+        showError(foodContainer);
     });
 }

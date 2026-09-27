@@ -117,6 +117,34 @@ main{
     border-color: black;
     box-shadow: 1px 1px 5px 1px rgb(185, 185, 185);
 }
+.loading-container {
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 20px;
+    color: #555;
+}
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #eee;
+    border-top: 4px solid #ff5200;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
 .food-container{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
